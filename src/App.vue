@@ -20,7 +20,7 @@
         </v-list-tile>
     </v-list>
   </v-navigation-drawer> 
-    <v-toolbar class="blue lighten-4"> 
+    <v-toolbar dark class="blue lighten-4"> 
       <v-toolbar-side-icon @click.native.stop="sideNav=!sideNav"
       class="hidden-sm-and-up"
       ></v-toolbar-side-icon>
