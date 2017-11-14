@@ -1,17 +1,26 @@
 <template>
     <v-container>
         <v-layout row wrap>
-            <v-flex xs12>
+            <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
                 <v-card class="info">
                     <v-container fluid>
                         <v-layout row>
-                            <v-flex xs5>
-                                <v-card-media
-                                    src="/static/doc-images/cards/foster.jpg"
-                                    height="125px"
-                                    contain
-                                    ></v-card-media>
-                                    3:11
+                            <v-flex xs5 sm4 md3>
+                                <v-card-media src="http://japan-magazine.jnto.go.jp/jnto2wm/wp-content/uploads/1608_special_TOTO_main.jpg" height="125px"></v-card-media>
+                            </v-flex>
+                            <v-flex xs7 sm8 md9>
+                                <v-card-title primary-title>
+                                    <div>
+                                        <h5 class="white--text mb-0">My Meetup</h5>
+                                        <div>November 14, 2017</div>
+                                    </div>
+                                </v-card-title>
+                                <v-card-action>
+                                    <v-btn flat to="/MeetUp/1">
+                                        <v-icon left light>arrow_forward</v-icon>
+                                        view Meetups
+                                    </v-btn>
+                                </v-card-action>
                             </v-flex>
                         </v-layout>
                     </v-container>

@@ -2,10 +2,11 @@
     <v-container>
      <v-layout  row wrap>
             <v-flex xs12>
-                <v-carousel>
+                <v-carousel style="cursor:pointer;">
                     <v-carousel-item v-for="meetUp in meetUps"
                     :src="meetUp.imageUrl"
-                    :key="meetUp.id">
+                    :key="meetUp.id"
+                    @click="onLoadMeetUp(meetUp.id)">
                     <div class="title">
                     {{meetUp.title}}
                     </div>
@@ -41,6 +42,11 @@ export default {
         {imageUrl: 'https://media.timeout.com/images/103812417/image.jpg', title: 'Meetup in Hong Kong', id: '4'},
          {imageUrl: 'http://www.lastminute.com/hotels/img/city/Paris-FR.jpg', title: 'Meetup in Paris', id: '5'}
       ]
+    }
+  },
+  methods: {
+    onLoadMeetUp (id) {
+      this.$router.push('/MeetUp/' + id)
     }
   }
 }
