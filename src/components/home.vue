@@ -33,15 +33,9 @@
 
 <script>
 export default {
-  data () {
-    return {
-      meetUps: [
-        {imageUrl: 'http://japan-magazine.jnto.go.jp/jnto2wm/wp-content/uploads/1608_special_TOTO_main.jpg', title: 'Meetup in Japan', id: '1'},
-        {imageUrl: 'https://wanderworld360.com/wp-content/uploads/2016/07/the-merlion-singapore-wallpaper.jpg', title: 'Meetup in Singapore', id: '2'},
-        {imageUrl: 'https://www.luxresorts.com/media/2601563/Maldives_Hotels_Resorts_LUX_Maldives_Spa_WellBeing.jpg', title: 'Meetup in Maldives', id: '3'},
-        {imageUrl: 'https://media.timeout.com/images/103812417/image.jpg', title: 'Meetup in Hong Kong', id: '4'},
-         {imageUrl: 'http://www.lastminute.com/hotels/img/city/Paris-FR.jpg', title: 'Meetup in Paris', id: '5'}
-      ]
+  computed: {
+    meetUps () {
+      return this.$store.getters.featuredMeetUps
     }
   },
   methods: {

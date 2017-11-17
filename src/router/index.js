@@ -23,6 +23,7 @@ export default new Router({
     {
       path: '/MeetUp/:id',
       name: 'MeetUp',
+      props: true,
       component: ViewMeetUp
     },
     {
