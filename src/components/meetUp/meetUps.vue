@@ -12,15 +12,15 @@
                                 <v-card-title primary-title>
                                     <div>
                                         <h5 class="white--text mb-0">{{meetUp.title}}</h5>
-                                        <div>{{meetUp.date}}</div>
+                                        <div>{{meetUp.date| date}}</div>
                                     </div>
                                 </v-card-title>
-                                <v-card-action>
+                                <v-card-actions>
                                     <v-btn flat :to="'/MeetUp/' + meetUp.id">
                                         <v-icon left light>arrow_forward</v-icon>
                                         view Meetups
                                     </v-btn>
-                                </v-card-action>
+                                </v-card-actions>
                             </v-flex>
                         </v-layout>
                     </v-container>

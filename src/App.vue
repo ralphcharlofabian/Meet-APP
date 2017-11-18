@@ -43,14 +43,26 @@
   export default {
     data () {
       return {
-        sideNav: false,
-        menuItems: [
-          {icon: 'supervisor_account', title: 'View Meetups', link: '/meetUp'},
-          {icon: 'room', title: 'Organize Meetups', link: '/createMeetUps'},
-          {icon: 'person', title: 'Profile', link: '/profile'},
+        sideNav: false
+      }
+    },
+    computed: {
+      menuItems () {
+        let menuItems = [
           {icon: 'face', title: 'Sign up', link: '/signUp'},
           {icon: 'lock_open', title: 'Sign in', link: '/signIn'}
         ]
+        if (this.userIsAuthenticated) {
+          menuItems = [
+                      {icon: 'supervisor_account', title: 'View Meetups', link: '/meetUp'},
+          {icon: 'room', title: 'Organize Meetups', link: '/createMeetUps'},
+          {icon: 'person', title: 'Profile', link: '/profile'}
+          ]
+        }
+        return menuItems
+      },
+      userIsAuthenticated () {
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
     <v-container>
-     <v-layout  row wrap>
+     <v-layout  row wrap v-if="!loading">
             <v-flex xs12>
                 <v-carousel style="cursor:pointer;">
                     <v-carousel-item v-for="meetUp in meetUps"
@@ -12,6 +12,16 @@
                     </div>
                     </v-carousel-item>
                 </v-carousel>
+            </v-flex>
+        </v-layout>
+        <v-layout>
+            <v-flex xs12 class="text-xs-center">
+                <v-progress-circular 
+                indeterminate 
+                v-bind:size="70" 
+                color="primary--text"
+                v-if="loading"
+                ></v-progress-circular>
             </v-flex>
         </v-layout>
         <v-layout row wrap class="mt-5">
@@ -36,6 +46,9 @@ export default {
   computed: {
     meetUps () {
       return this.$store.getters.featuredMeetUps
+    },
+    loading () {
+      return this.$store.getters.loading
     }
   },
   methods: {
