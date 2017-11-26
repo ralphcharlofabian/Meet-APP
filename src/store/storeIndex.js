@@ -79,6 +79,7 @@ export const store = new Vuex.Store({
             description: obj[key].description,
             imageUrl: obj[key].imageUrl,
             date: obj[key].date,
+            location: obj[key].location,
             creatorId: obj[key].creatorId
           })
         }
@@ -95,16 +96,30 @@ export const store = new Vuex.Store({
       const meetUp = {
         title: payload.title,
         location: payload.location,
-        imageUrl: payload.imageUrl,
         description: payload.description,
         date: payload.date.toISOString(),
         creatorId: getters.user.id
       }
+      let imageUrl
+      let key
       Firebase.database().ref('meetUps').push(meetUp)
       .then((data) => {
-        const key = data.key
+        key = data.key
+        return key
+      })
+      .then(key => {
+        const fileName = payload.image.name
+        const ext = fileName.slice(fileName.lastIndexOf('.'))
+        return Firebase.storage().ref('meetUps/' + key + '.' + ext).put(payload.image)
+      })
+      .then(fileData => {
+        imageUrl = fileData.metadata.downloadURLs[0]
+        return Firebase.database().ref('meetUps').child(key).update({imageUrl: imageUrl})
+      })
+      .then(() => {
         commit('createMeetUp', {
           ...meetUp,
+          imageUrl: imageUrl,
           id: key
         })
       })
@@ -153,6 +168,13 @@ export const store = new Vuex.Store({
           commit('setError', error)
         }
       )
+    },
+    autoSignIn ({commit}, payload) {
+      commit('setUser', { id: payload.uid, registeredMeetUps: [] })
+    },
+    logout ({commit}) {
+      Firebase.auth().signOut()
+      commit('setUser', null)
     },
     clearError ({commit}) {
       commit('clearError')
