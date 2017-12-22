@@ -10,7 +10,7 @@
                 ></v-progress-circular>
             </v-flex>
         </v-layout>
-        <v-layout row wrap>
+        <v-layout row wrap v-else>
             <v-flex xs12>
                 <v-card>
                     <v-card-title>
@@ -25,6 +25,11 @@
                     <v-card-text>
                         <div class="info--text">
                             {{meetUps.date | date}} - {{meetUps.location}}
+                        </div>
+                        <div>
+                             <app-edit-meetup-date-dialog :meetUp="meetUps" v-if="userIsCreator"></app-edit-meetup-date-dialog>
+                            <app-edit-meetup-time-dialog :meetUp="meetUps" v-if="userIsCreator"></app-edit-meetup-time-dialog>
+                        
                         </div>
                         <div>{{meetUps.description}}</div>
                     </v-card-text>

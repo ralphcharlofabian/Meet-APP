@@ -11,12 +11,18 @@ import DateFilter from './filters/date'
 import * as firebase from 'firebase'
 import AlertCmp from './components/shared/alert'
 import EditMeetUpDetailsDialog from './components/meetUp/edit/editMeetUpDetailsDialog'
+import EditMeetUpDateDialog from './components/meetUp/edit/editMeetUpDateDialog'
+import EditMeetUpTimeDialog from './components/meetUp/edit/editMeetUpTimeDialog'
+
 Vue.use(Vuetify)
 
 Vue.config.productionTip = false
 Vue.filter('date', DateFilter)
 Vue.component('app-alert', AlertCmp)
 Vue.component('app-edit-meetup-details-dialog', EditMeetUpDetailsDialog)
+Vue.component('app-edit-meetup-date-dialog', EditMeetUpDateDialog)
+Vue.component('app-edit-meetup-time-dialog', EditMeetUpTimeDialog)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

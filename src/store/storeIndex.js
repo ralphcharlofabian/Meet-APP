@@ -103,6 +103,7 @@ export const store = new Vuex.Store({
       .catch(
         (error) => {
           console.log(error)
+          commit('setLoading', false)
         }
       )
     },
@@ -153,7 +154,7 @@ export const store = new Vuex.Store({
       if (payload.date) {
         updateObj.date = payload.date
       }
-      Firebase.database().ref('meetUps').child(payload.id).update({updateObj})
+      Firebase.database().ref('meetUps').child(payload.id).update(updateObj)
         .then(() => {
           commit('setLoading', false)
           commit('updateMeetUp', payload)
