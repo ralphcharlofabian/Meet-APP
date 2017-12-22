@@ -26,12 +26,13 @@
         </v-layout>
         <v-layout row wrap class="mt-5">
             <v-flex xs12 class="text-xs-center">
-                <h6>JOIN OUR AWESOME MEETUPS AND TOGETHER LETC CHANGE THE WORLD!!</h6>
+                <h5>JOIN OUR AWESOME MEETUPS!</h5>
+                <h6> Where in you can able to learn, explore, know new ideas and also share! For we believe that sharing knowledge are continuous and a must! TOGETHER LETS CHANGE THE WORLD!!</h6>
             </v-flex>
         </v-layout>
         <v-layout row wrap class="mt-2">
             <v-flex xs12 sm6 class="text-xs-center text-sm-right">
-                <v-btn large router to="/meetUp" dark class="blue accent-1">Explore Meetups</v-btn>
+                <v-btn large router to="/meetUp" dark class="secondary">Explore Meetups</v-btn>
             </v-flex>
              <v-flex xs12 sm6 class="text-xs-center text-sm-left">
                 <v-btn large router to="/createMeetUps" dark class="blue accent-1">Organize Meetups</v-btn>

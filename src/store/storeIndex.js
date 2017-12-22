@@ -52,6 +52,20 @@ export const store = new Vuex.Store({
     setUser (state, payload) {
       state.user = payload
     },
+    updateMeetUp (state, payload) {
+      const meetUp = state.loadedMeetUps.find(meetUp => {
+        return meetUp.id === payload.id
+      })
+      if (payload.title) {
+        meetUp.title = payload.title
+      }
+      if (payload.description) {
+        meetUp.description = payload.description
+      }
+      if (payload.date) {
+        meetUp.date = payload.date
+      }
+    },
     setLoading (state, payload) {
       state.loading = payload
     },
@@ -126,6 +140,28 @@ export const store = new Vuex.Store({
       .catch((error) => {
         console.log(error)
       })
+    },
+    updateMeetUpData ({commit}, payload) {
+      commit('setLoading', true)
+      const updateObj = {}
+      if (payload.title) {
+        updateObj.title = payload.title
+      }
+      if (payload.description) {
+        updateObj.description = payload.description
+      }
+      if (payload.date) {
+        updateObj.date = payload.date
+      }
+      Firebase.database().ref('meetUps').child(payload.id).update({updateObj})
+        .then(() => {
+          commit('setLoading', false)
+          commit('updateMeetUp', payload)
+        })
+        .catch(error => {
+          console.log(error)
+          commit('setLoading', false)
+        })
     },
     signUserUp ({commit}, payload) {
       commit('setLoading', true)
