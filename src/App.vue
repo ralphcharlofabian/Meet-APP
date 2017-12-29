@@ -68,7 +68,7 @@
           menuItems = [
                       {icon: 'supervisor_account', title: 'View Meetups', link: '/meetUp'},
           {icon: 'room', title: 'Organize Meetups', link: '/createMeetUps'},
-          {icon: 'person', title: 'Profile', link: '/profile'}
+          {icon: 'person', title: 'Dev Profile', link: '/profile'}
           ]
         }
         return menuItems
